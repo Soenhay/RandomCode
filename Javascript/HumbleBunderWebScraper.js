@@ -13,16 +13,17 @@ Once you copy all of the output into a text file you can then sort it with an on
 
 var gameNames = '';
 $('.unredeemed-keys-table').find('.game-name').each(function(){
+var monthlyTitle = $(this).find('p').attr('title'); 
 var gameName = $(this).find('h4').attr('title'); 
   if(gameName){
-  gameNames+= gameName + '\n';
+  gameNames+= monthlyTitle + ': ' + gameName.trim() + '\n';
   }
  });
 $('.content-choice').not('.claimed').find('.choice-content > .title-and-delivery-methods > .content-choice-title').each(function(){
-var choiceTitle = $('.content-choices-title > span').text().trim();
+var monthlyTitle = $('.content-choices-title > span').text().trim();
 var gameName = $(this).text();
-	if(gameName){
-  gameNames+= choiceTitle + ': ' + gameName.trim() + '\n';
-	}
+    if(gameName){
+  gameNames+= monthlyTitle + ': ' + gameName.trim() + '\n';
+    }
 });
 console.log(gameNames);
