@@ -9,6 +9,7 @@ DECLARE @ObjectInfo TABLE
 ( 
   DatabaseName VARCHAR(1000),
   QualifiedObjectName VARCHAR(1000),
+  ObjectType VARCHAR(1000),
   OutputFilePath VARCHAR(1000)
 )
 
@@ -41,6 +42,7 @@ BEGIN
     SELECT  
      DatabaseName
     , DatabaseName + ''.'' + SchemaName + ''.'' + ObjectName AS QualifiedObjectName
+	, ObjectType
     , ServerName+''\''+DatabaseName+''\''+SchemaName+''\''+ObjectName+''.sql'' AS OutputFilePath
     FROM
     (
@@ -48,11 +50,12 @@ BEGIN
 		   , DB_NAME() AS DatabaseName
 		   , ss.name AS SchemaName
 		   , so.name AS ObjectName
-		   , so.type
+		   , LTRIM(RTRIM(so.type)) AS ObjectType
 		   , so.type_desc
 	   FROM   SYS.objects AS so
 			JOIN SYS.schemas AS ss ON ss.schema_id = so.schema_id
-	   WHERE  so.TYPE IN(''FN'', ''IF'', ''P'', ''TF'')
+	   WHERE  (so.TYPE IN(''FN'', ''IF'', ''P'', ''TF'', ''U'') AND so.is_ms_shipped = 0)
+			OR (so.TYPE IN(''TT''))
     ) AS a;
     ';
     --PRINT @Command;
@@ -84,7 +87,7 @@ DEALLOCATE database_cursor;
 --SELECT * FROM @Errors
 
 DECLARE results_cursor CURSOR
-FOR SELECT DatabaseName + ',' + QualifiedObjectName + ',' + OutputFilePath
+FOR SELECT DatabaseName + ',' + QualifiedObjectName + ',' + ObjectType+ ',' + OutputFilePath
     FROM   @ObjectInfo
 ORDER BY QualifiedObjectName
 
