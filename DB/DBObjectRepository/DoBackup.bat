@@ -10,6 +10,6 @@ for /f "usebackq tokens=1,2,3,4 delims=," %%a in ("parameters.csv") do (
 	for %%F in ("%~dp0%%d") do ( 
 	if not exist "%%~dpF" MD "%%~dpF"
 	)
-	sqlcmd -m 1 -E -h -1 -S SQL2016.ad.tamucc.edu -i %~dp0\GetObjectInfo.sql -v dbName=%%a objectName='%%b' objectType='%%c' -o %~dp0%%d
+	sqlcmd -m 1 -E -h -1 -S <sqlServerName> -i %~dp0\GetObjectInfo.sql -v dbName=%%a objectName='%%b' objectType='%%c' -o %~dp0%%d
 )
 ::pause
