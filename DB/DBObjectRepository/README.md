@@ -65,7 +65,7 @@
    
 - Make sure newline is at the end of each git command in the bat file.
 
-- List credentials and use that info to add them to the user with runas (see CrediantialsCreate.bat):
+- List credentials and use that info to add them to the user with runas (see CredentialsCreate.bat):
 
 E:\backup\databasebackup>cmdkey /list
 
