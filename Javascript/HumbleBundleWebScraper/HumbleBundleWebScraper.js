@@ -7,7 +7,7 @@ It also works on the humble choice pages.
 Once you copy all of the output into a text file you can then sort it with an online tool.
 
 03/06/2019 First version.
-04/11/2010 Updated for Humble Choice.
+04/11/2020 Updated for Humble Choice.
 
 */
 
