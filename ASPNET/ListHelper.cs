@@ -53,7 +53,7 @@ namespace Common
             return result;
         }
 
-        public static List<T> AddUnique<T>(this List<T> list, T item) where T : IComparable
+        public static List<T> AddUnique<T>(this List<T> list, T item) where T : IEquatable<T>
         {
             if (!list.Contains(item))
             {
@@ -63,7 +63,7 @@ namespace Common
             return list;
         }
 
-        public static List<T> AddRangeUnique<T>(this List<T> list, IEnumerable<T> range) where T : IComparable
+        public static List<T> AddRangeUnique<T>(this List<T> list, IEnumerable<T> range) where T : IEquatable<T>
         {
             foreach (T item in range)
             {
