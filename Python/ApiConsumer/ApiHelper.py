@@ -46,7 +46,7 @@ class ApiHelper:
             requests.codes.partial,                 #206
             requests.codes.multi_status,            #207
             requests.codes.already_reported,        #208
-            requests.codes.im_used,                 #2226
+            requests.codes.im_used,                 #226
             )
 
         if response is None:
