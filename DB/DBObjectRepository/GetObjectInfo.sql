@@ -3,14 +3,16 @@ SET NOCOUNT ON
 DECLARE @db_name SYSNAME
 		, @object_name SYSNAME
 		, @object_type SYSNAME
+		, @def VARCHAR(max)
 		
 SELECT @db_name = '$(dbName)'
-	, @object_name = $(objectName)
-	, @object_type = $(objectType)
+	, @object_name = '$(objectName)'
+	, @object_type = '$(objectType)'
 
 IF @object_type NOT IN ('U', 'TT')
 BEGIN
-	PRINT LTRIM(RTRIM(ISNULL(OBJECT_DEFINITION(OBJECT_ID(@object_name)), '')))
+	SET @def = LTRIM(RTRIM(ISNULL(OBJECT_DEFINITION(OBJECT_ID(@object_name)), '')))
+	PRINT @def
 END
 ELSE
 BEGIN
