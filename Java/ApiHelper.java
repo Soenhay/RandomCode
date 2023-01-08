@@ -246,7 +246,7 @@ public final class ApiHelper {
 
         builder.setUri(uri);
 
-        if(uri.toString().toLowerCase().contains("tamucc") || uri.toString().toLowerCase().contains("localhost") ) {
+        if(uri.toString().toLowerCase().contains("localhost") ) {
             builder.setHeader("AppName", AppConfig.getInstance().AppName);
         }
 
