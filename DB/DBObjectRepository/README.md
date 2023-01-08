@@ -45,7 +45,7 @@
  
  - util folder: Various helper files.
  
- - util/CrediantialsCreate.bat: used to create git credentials for service account user.
+ - util/CredentialsCreate.bat: used to create git credentials for service account user.
  
  - util/CredentialsList.bat: used to list credentials for service account user. Doesn't currently work.
  
@@ -59,7 +59,7 @@
 
 - Use testCmd.bat to test out running sqlcmd on one object.
 
-- ‘sqlcmd’is not recognized as an internal or external command.
+- ‘sqlcmd’ is not recognized as an internal or external command.
    - Install the latest sqlcmd. Search online for "Download the latest version of sqlcmd Utility".
    - You might get a popup saying this is also required (if so then install it first): Microsoft ODBC Driver 17 for SQL Server
    
